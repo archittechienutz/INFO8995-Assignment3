@@ -8,15 +8,27 @@ postgresql-ha:
   enabled: false
 
 persistence:
-  enabled: false
+  enabled: true
+  size: 5Gi
+  storageClass: standard
 
 gitea:
+  admin:
+    username: gitea_admin
+    password: admin123
+    email: admin@example.com
+
   config:
     database:
-      DB_TYPE: sqlite3
+      DB_TYPE: mysql
+      HOST: mysql.default.svc.cluster.local:3306
+      NAME: gitea_db
+      USER: gitea
+      PASSWD: gitea123
+
     session:
-      PROVIDER: memory
+      PROVIDER: db
     cache:
-      ADAPTER: memory
+      ADAPTER: db
     queue:
-      TYPE: level
+      TYPE: persistable-channel

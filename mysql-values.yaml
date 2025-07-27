@@ -1,0 +1,9 @@
+auth:
+  rootPassword: admin123
+  username: gitea
+  password: gitea123
+  database: gitea_db
+
+primary:
+  service:
+    type: ClusterIP
